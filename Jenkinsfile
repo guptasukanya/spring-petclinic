@@ -3,12 +3,13 @@ pipeline {
   stages {
     stage('build') {
       steps {
-        sh 'maven -X clean install'
+        sh 'mvn -X clean install'
       }
     }
 
   }
   tools {
-    maven 'maven'
+//     maven 'maven'
+    mvn 'maven'
   }
 }
