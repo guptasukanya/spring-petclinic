@@ -2,7 +2,7 @@
 - hosts: all
   tasks:
         - name: copy war file
-          copy: src=./PetClinic/target/spring-petclinic-2.5.0-SNAPSHOT.jar dest=/var/lib/tomcat6/webapps/
+          copy: src=/var/lib/jenkins/workspace/PetClinic/target/spring-petclinic-2.5.0-SNAPSHOT.jar dest=/var/lib/tomcat6/webapps/
 
           notify: restart tomcat
 
