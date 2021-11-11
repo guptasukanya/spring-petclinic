@@ -1,9 +1,19 @@
         
 - hosts: all
   become: true
-  become_user: root
-  gather_facts: false
   tasks:
-    - include_role:
-        name: tomcat
+        - name: copy war file
+          copy: src=./target/LoginWebApp-1.war dest=/var/lib/tomcat6/webapps/
+
+
+          notify: restart tomcat
+
+        - name: Install Tomcat init script
+          copy: src=tomcat-initscript.sh dest=/etc/init.d/tomcat6 mode=0755
+
+        - name: Start Tomcat
+          service: name=tomcat state=started enabled=yes
+
+        - name: wait for tomcat to start
+          wait_for: port={{http_port}}
       
