@@ -10,7 +10,7 @@
           file: src=/home/vagrant/spring-petclinic-2.5.0-SNAPSHOT.jar path=/etc/init.d/petclinic state=link
           
         -  name: Start petclinic
-          service: name=petclinic state=restarted enabled=yes
+           service: name=petclinic state=restarted enabled=yes
 #           - service:
 #           name: petclinic
 #           state: restarted
