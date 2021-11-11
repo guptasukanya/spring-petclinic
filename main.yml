@@ -4,8 +4,14 @@
         - name: copy war file
           copy: src=/var/lib/jenkins/workspace/PetClinic/target/spring-petclinic-2.5.0-SNAPSHOT.jar dest=/home/vagrant
           
-        - name: run jar file
-          shell: java -jar /home/vagrant/spring-petclinic-2.5.0-SNAPSHOT.jar
+#         - name: run jar file
+#           shell: java -jar /home/vagrant/spring-petclinic-2.5.0-SNAPSHOT.jar
+        - name: Symlink install directory
+          file: src=/home/vagrant/spring-petclinic-2.5.0-SNAPSHOT.jar path=/etc/init.d/petclinic state=link
+          
+          - service:
+          name: petclinic
+          state: restarted
 
 
 #           notify: restart tomcat
