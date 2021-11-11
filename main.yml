@@ -4,13 +4,13 @@
         - name: copy war file
           copy: src=/var/lib/jenkins/workspace/PetClinic/target/spring-petclinic-2.5.0-SNAPSHOT.jar dest=/home/vagrant
           
-#         - name: run jar file
-#           shell: java -jar /home/vagrant/spring-petclinic-2.5.0-SNAPSHOT.jar
-        - name: Symlink install directory
-          file: src=/home/vagrant/spring-petclinic-2.5.0-SNAPSHOT.jar path=/etc/init.d/petclinic state=link
+        - name: run jar file
+          shell: screen -dmS petclinic java -jar /home/vagrant/spring-petclinic-2.5.0-SNAPSHOT.jar
+#         - name: Symlink install directory
+#           file: src=/home/vagrant/spring-petclinic-2.5.0-SNAPSHOT.jar path=/etc/init.d/petclinic state=link
           
-        -  name: Start petclinic
-           service: name=petclinic state=restarted enabled=yes
+#         -  name: Start petclinic
+#            service: name=petclinic state=restarted enabled=yes
 #           - service:
 #           name: petclinic
 #           state: restarted
@@ -24,6 +24,6 @@
 #         - name: Start Tomcat
 #           service: name=tomcat state=started enabled=yes
 
-#         - name: wait for tomcat to start
-#           wait_for: port={{http_port}}
+        - name: wait for tomcat to start
+          wait_for: port=8080
       
