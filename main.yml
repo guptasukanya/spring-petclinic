@@ -5,7 +5,7 @@
           copy: src=./target/spring-petclinic-2.5.0-SNAPSHOT.jar dest=/home/vagrant
           
         - name: run jar file
-          shell: screen -dmS petclinic java -jar /home/vagrant/spring-petclinic-2.5.0-SNAPSHOT.jar
+          shell: screen -dmS petclinic java -jar /home/vagrant/spring-petclinic-2.5.0-SNAPSHOT.jar > /home/vagrant/application.log
 
         - name: wait for application to start
           wait_for: port=8080
